@@ -47,7 +47,6 @@ $blockquoteBgColor: #f0fdff;
     @include headTitle(10px, 24px);
     @include headTextShadow;
     border-bottom: 1px solid #ececec;
-    transition: color 2s;
   }
 
   h3 {
