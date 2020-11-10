@@ -20,7 +20,7 @@ $blockquoteBgColor: #f0fdff;
 }
 
 @mixin headTextShadow {
-  text-shadow: rgba(68, 68, 68, .45) 2px 2px 2px;
+  text-shadow: rgba(68, 68, 68, .3) 2px 2px 2px;
   color: $titleBlue;
 }
 
@@ -73,7 +73,7 @@ $blockquoteBgColor: #f0fdff;
     line-height: inherit;
     margin-top: $line-space;
     margin-bottom: $line-space;
-    text-shadow: rgba(175, 175, 175, 0.45) 2px 2px 1px;
+    text-shadow: rgba(175, 175, 175, 0.25) 2px 2px 1px;
   }
 
   img {
