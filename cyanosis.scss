@@ -4,7 +4,7 @@ Consolas,
 'Courier New',
 monospace;
 $line-space: 16px;
-$baseTxtColor: #555;
+$baseTxtColor: #353535;
 $titleBlue: #005bb7;
 $strongBlue: #2196f3;
 $codeColor: #c2185b;
@@ -15,12 +15,8 @@ $blockquoteBgColor: #f0fdff;
   padding-bottom: $padb;
   margin-top: $mtop;
   margin-bottom: 10px;
-  line-height: 1.5;
   font-size: $fontSize;
-}
-
-@mixin headTextShadow {
-  text-shadow: rgba(68, 68, 68, .3) 2px 2px 2px;
+  line-height: 1.5;
   color: $titleBlue;
 }
 
@@ -40,40 +36,52 @@ $blockquoteBgColor: #f0fdff;
 
   h1 {
     @include headTitle(4px, 30px);
-    @include headTextShadow;
   }
 
   h2 {
+    position: relative;
+    padding-left: 16px;
+    padding-right: 10px;
     @include headTitle(10px, 24px);
-    @include headTextShadow;
     border-bottom: 1px solid #ececec;
+
+    &::before {
+      content: '「';
+      position: absolute;
+      top: -6px;
+      left: -10px;
+    }
+
+    &::after {
+      content: '」';
+      position: absolute;
+      top: 6px;
+      right: auto;
+    }
   }
 
   h3 {
+    position: relative;
+    padding-left: 16px;
     @include headTitle(0, 20px);
-    @include headTextShadow;
   }
 
   h4 {
     @include headTitle(0, 16px);
-    @include headTextShadow;
   }
 
   h5 {
     @include headTitle(0, 14px);
-    @include headTextShadow;
   }
 
   h6 {
     @include headTitle(0, 12px, 6px);
-    @include headTextShadow;
   }
 
   p {
     line-height: inherit;
     margin-top: $line-space;
     margin-bottom: $line-space;
-    text-shadow: rgba(175, 175, 175, 0.25) 2px 2px 1px;
   }
 
   img {
@@ -243,6 +251,7 @@ $blockquoteBgColor: #f0fdff;
     padding-left: 6px;
   }
 
+  // selection
   h1::selection,
   h2::selection,
   h3::selection,
@@ -266,7 +275,7 @@ $blockquoteBgColor: #f0fdff;
   }
 
   code::selection {
-    background-color:#ffeaeb;
+    background-color: #ffeaeb;
   }
 
   pre {
@@ -276,12 +285,13 @@ $blockquoteBgColor: #f0fdff;
   }
 
   ol,
-  ul{
-    ::selection{
+  ul {
+    ::selection {
       background-color: transparent;
     }
   }
 
+  // @media
   @media (max-width: 720px) {
     h1 {
       font-size: 24px;
