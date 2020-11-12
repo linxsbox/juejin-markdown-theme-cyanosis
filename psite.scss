@@ -4,26 +4,34 @@ Consolas,
 'Courier New',
 monospace;
 $line-space: 16px;
-$baseTxtColor: #353535;
-$titleBlue: #005bb7;
+$baseTxtColor: #cacaca;
+$titleBlue: #fff;
 $strongBlue: #2196f3;
-$codeColor: #c2185b;
-$codeBgColor: #fff4f4;
+$codeColor: #000;
+// $codeBgColor: #fff4f4;
+$codeBgColor: #fe9900;
 $blockquoteBgColor: #f0fdff;
 
 @mixin headTitle($padb: 4px, $fontSize: 24px, $mtop: 36px) {
   padding-bottom: $padb;
   margin-top: $mtop;
   margin-bottom: 10px;
-  font-size: $fontSize;
   line-height: 1.5;
+  font-size: $fontSize;
+}
+
+@mixin headTextShadow {
   color: $titleBlue;
 }
 
 @mixin blockquoteColor {
-  color: #8c8c8c;
-  border-left: 4px solid $strongBlue;
-  background-color: #f0fdff;
+  color: #c7c7c7;
+  border-left: 4px solid $codeBgColor;
+  background-color: rgba(255, 199, 116, 0.1);
+}
+
+.main-area {
+  background-color: #2f2f2f;
 }
 
 .markdown-body {
@@ -33,51 +41,37 @@ $blockquoteBgColor: #f0fdff;
   font-size: 14px;
   overflow-x: hidden;
   color: $baseTxtColor;
+  background-color: #2f2f2f;
 
   h1 {
     @include headTitle(4px, 30px);
+    @include headTextShadow;
   }
 
   h2 {
-    position: relative;
-    padding-left: 16px;
-    padding-right: 10px;
     @include headTitle(10px, 24px);
+    @include headTextShadow;
     border-bottom: 1px solid #ececec;
-
-    &::before {
-      content: '「';
-      position: absolute;
-      top: -6px;
-      left: -10px;
-    }
-
-    &::after {
-      content: '」';
-      position: absolute;
-      top: 6px;
-      right: auto;
-    }
   }
 
   h3 {
-    @include headTitle(0, 20px, 30px);
-    padding-left: 6px;
+    @include headTitle(0, 20px);
+    @include headTextShadow;
   }
 
   h4 {
-    @include headTitle(0, 16px, 24px);
-    padding-left: 6px;
+    @include headTitle(0, 16px);
+    @include headTextShadow;
   }
 
   h5 {
-    @include headTitle(0, 14px, 18px);
-    padding-left: 6px;
+    @include headTitle(0, 14px);
+    @include headTextShadow;
   }
 
   h6 {
-    @include headTitle(0, 12px, 12px);
-    padding-left: 6px;
+    @include headTitle(0, 12px, 6px);
+    @include headTextShadow;
   }
 
   p {
@@ -100,14 +94,14 @@ $blockquoteBgColor: #f0fdff;
   }
 
   code {
-    padding: .065em .4em;
+    padding: 0.065em 0.4em;
     font-family: $monospace-font;
-    font-size: .87em;
+    font-size: 0.87em;
     color: $codeColor;
     word-break: break-word;
     overflow-x: auto;
     background-color: $codeBgColor;
-    border-radius: 2px;
+    border-radius: 4px;
   }
 
   pre {
@@ -121,26 +115,27 @@ $blockquoteBgColor: #f0fdff;
       padding: 16px 12px;
       margin: 0;
       font-size: 12px;
-      color: #333;
+      color: rgb(216, 216, 216);
       word-break: normal;
       overflow-x: auto;
       background: #f8f8f8;
+      background: #000;
     }
   }
 
   a {
     position: relative;
     text-decoration: none;
-    color: #3da8f5;
-    border-bottom: 1px solid #bedcff;
+    color: $codeBgColor;
+    border-bottom: 1px solid rgba(255, 199, 116, 0.5);
 
     &:hover {
-      color: #007fff;
-      border-bottom-color: #007fff;
+      color: $codeBgColor;
+      border-bottom-color: $codeBgColor;
     }
 
     &:active {
-      color: #007fff;
+      color: $codeBgColor;
     }
 
     &::after {
@@ -150,15 +145,15 @@ $blockquoteBgColor: #f0fdff;
       left: 0;
       width: 100%;
       opacity: 0;
-      border-bottom: 1px solid #bedcff;
-      transition: top .3s, opacity .3s;
+      border-bottom: 1px solid rgba(255, 199, 116, 0.5);
+      transition: top 0.3s, opacity .3s;
       transform: translate3d(0, 0, 0);
     }
 
     &:hover::after {
       top: 0;
       opacity: 1;
-      border-bottom-color: #007fff;
+      border-bottom-color: $codeBgColor;
     }
   }
 
@@ -168,35 +163,28 @@ $blockquoteBgColor: #f0fdff;
     width: auto;
     max-width: 100%;
     overflow: auto;
-    border: 1px solid #c3e0fd;
-    border-spacing: 0;
-    border-collapse: collapse;
+    border: solid 1px #fe9900;
+  }
 
-    thead {
-      color: #000;
-      text-align: left;
-      background: #f6f6f6;
-    }
+  thead {
+    background: #fe9900;
+    color: #000;
+    font-size: 14px;
+    text-align: left;
+  }
 
-    tr:nth-child(2n) {
-      background-color: #f7fbff;
-    }
+  tr:nth-child(2n) {
+    background-color: #6d5736;
+  }
 
-    th,
-    td {
-      padding: 12px 8px;
-      line-height: 24px;
-      border: 1px solid #c3e0fd;
-    }
+  th,
+  td {
+    padding: 12px 8px;
+    line-height: 24px;
+  }
 
-    th {
-      color: #005bb7;
-      background-color: #dff0ff;
-    }
-
-    td {
-      min-width: 120px;
-    }
+  td {
+    min-width: 120px;
   }
 
   blockquote {
@@ -221,12 +209,13 @@ $blockquoteBgColor: #f0fdff;
 
   b,
   strong {
-    color: $strongBlue;
+    // color: $strongBlue;
+    color: $codeBgColor;
   }
 
   i,
   em {
-    color: #4fc3f7;
+    color: #ffd28e;
   }
 
   del {
@@ -261,7 +250,6 @@ $blockquoteBgColor: #f0fdff;
     padding-left: 6px;
   }
 
-  // selection
   h1::selection,
   h2::selection,
   h3::selection,
@@ -269,11 +257,20 @@ $blockquoteBgColor: #f0fdff;
   h5::selection,
   h6::selection {
     color: $titleBlue;
-    background-color: rgba(160, 200, 255, .15);
+    background-color: rgba(255, 227, 185, 0.25);
+  }
+
+  h2::before {
+    content: 'P#';
+    padding: 0 6px;
+    margin: 0 4px;
+    color: $codeColor;
+    background-color: $codeBgColor;
+    border-radius: 6px;
   }
 
   p::selection {
-    color: rgb(200, 0, 0);
+    color: rgb(194, 132, 50);
   }
 
   a::selection,
@@ -282,11 +279,12 @@ $blockquoteBgColor: #f0fdff;
   i::selection,
   em::selection,
   del::selection {
-    background-color: transparent;
+    color: #000;
+    background-color: rgba(254, 152, 0, 0.7);
   }
 
   code::selection {
-    background-color: #ffeaeb;
+    background-color: rgba(254, 152, 0, 0.7);
   }
 
   pre {
@@ -302,7 +300,6 @@ $blockquoteBgColor: #f0fdff;
     }
   }
 
-  // @media
   @media (max-width: 720px) {
     h1 {
       font-size: 24px;
