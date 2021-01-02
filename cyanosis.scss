@@ -11,6 +11,7 @@ $codeColor: #c2185b;
 $codeBgColor: #fff4f4;
 $blockquoteBgColor: #f0fdff;
 $aColor: #007fff;
+$lineColor: #bedcff;
 
 @mixin headTitle($padb: 4px, $fontSize: 24px, $mtop: 36px) {
   padding-bottom: $padb;
@@ -160,7 +161,7 @@ $aColor: #007fff;
       }
 
       &::-webkit-scrollbar-track {
-        background-color: #bedcff;
+        background-color: $lineColor;
       }
 
       &::-webkit-scrollbar-thumb {
@@ -174,7 +175,7 @@ $aColor: #007fff;
     position: relative;
     text-decoration: none;
     color: #3da8f5;
-    border-bottom: 1px solid #bedcff;
+    border-bottom: 1px solid $lineColor;
 
     &:hover {
       color: $aColor;
@@ -192,7 +193,7 @@ $aColor: #007fff;
       left: 0;
       width: 100%;
       opacity: 0;
-      border-bottom: 1px solid #bedcff;
+      border-bottom: 1px solid $lineColor;
       transition: top .3s, opacity .3s;
       transform: translate3d(0, 0, 0);
     }
@@ -310,9 +311,22 @@ $aColor: #007fff;
 
   // details & summary
   details {
-    &>summary {}
+    &>summary {
+      outline: none;
+      color: #005bb7;
+      font-size: 20px;
+      font-weight: bolder;
+      border-bottom: 1px solid $lineColor;
+      cursor: pointer;
+    }
 
-    &>p {}
+    &>p {
+      padding: 10px 20px;
+      margin: 10px 0 0;
+      color: #666;
+      background-color: #f0fdff;
+      border: 2px dashed $strongColor;
+    }
   }
 
   // selection
@@ -353,6 +367,43 @@ $aColor: #007fff;
   ul {
     ::selection {
       background-color: rgba(160, 200, 255, .15);
+    }
+  }
+
+  input[type="checkbox"] {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: inherit;
+      height: inherit;
+      background: #cee9ff;
+      border: 1px solid $aColor;
+      border-radius: 2px;
+      box-sizing: border-box;
+      z-index: 1;
+    }
+
+    &:checked {
+      &::after {
+        content: "\2713";
+        position: absolute;
+        top: -12px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        color: #e50232;
+        font-size: 20px;
+        font-weight: bold;
+        z-index: 2;
+      }
     }
   }
 
