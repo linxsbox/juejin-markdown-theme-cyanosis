@@ -25,7 +25,7 @@ $lineColor: #bedcff;
 @mixin blockquoteColor {
   color: #8c8c8c;
   border-left: 4px solid $strongColor;
-  background-color: #f0fdff;
+  background-color: $blockquoteBgColor;
 }
 
 .markdown-body {
@@ -313,7 +313,7 @@ $lineColor: #bedcff;
   details {
     &>summary {
       outline: none;
-      color: #005bb7;
+      color: $titleColor;
       font-size: 20px;
       font-weight: bolder;
       border-bottom: 1px solid $lineColor;
@@ -324,7 +324,7 @@ $lineColor: #bedcff;
       padding: 10px 20px;
       margin: 10px 0 0;
       color: #666;
-      background-color: #f0fdff;
+      background-color: $blockquoteBgColor;
       border: 2px dashed $strongColor;
     }
   }
@@ -370,39 +370,44 @@ $lineColor: #bedcff;
     }
   }
 
-  input[type="checkbox"] {
-    position: relative;
+  .contains-task-list {
+    padding-left: 14px;
+    list-style: none;
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: inherit;
-      height: inherit;
-      background: #cee9ff;
-      border: 1px solid $aColor;
-      border-radius: 2px;
-      box-sizing: border-box;
-      z-index: 1;
-    }
+    input[type="checkbox"] {
+      position: relative;
 
-    &:checked {
-      &::after {
-        content: "\2713";
+      &::before {
+        content: "";
         position: absolute;
-        top: -12px;
+        top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        width: 0;
-        height: 0;
-        color: #e50232;
-        font-size: 20px;
-        font-weight: bold;
-        z-index: 2;
+        width: inherit;
+        height: inherit;
+        background: #f0f8ff;
+        border: 1px solid #add6ff;
+        border-radius: 2px;
+        box-sizing: border-box;
+        z-index: 1;
+      }
+
+      &:checked {
+        &::after {
+          content: "\2713";
+          position: absolute;
+          top: -12px;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 0;
+          height: 0;
+          color: #ff5555;
+          font-size: 20px;
+          font-weight: bold;
+          z-index: 2;
+        }
       }
     }
   }
