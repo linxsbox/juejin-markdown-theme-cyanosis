@@ -91,18 +91,6 @@ $d-selectionPreCodeBgColor: rgba(160, 200, 255, 0.25);
   #{$id}-slct-prebg-color: if($isDark, $d-selectionPreCodeBgColor, $l-selectionPreCodeBgColor);
 }
 
-:root {
-  @include LightAndDark();
-}
-
-.__dark {
-  @include LightAndDark(true);
-}
-
-html.__dark {
-  color-scheme: dark;
-}
-
 @mixin transitionColor() {
   transition: color 0.35s;
 }
@@ -131,14 +119,6 @@ html.__dark {
   }
 }
 
-.article-area,
-.main-area {
-  & > .article {
-    background-color: var(--cyanosis-bg-color);
-    transition: background-color 0.5s;
-  }
-}
-
 .markdown-body {
   word-break: break-word;
   line-height: 1.75;
@@ -147,6 +127,11 @@ html.__dark {
   overflow-x: hidden;
   color: var(--cyanosis-base-color);
   @include transitionColor();
+  @include LightAndDark();
+
+  &.__dark{
+    @include LightAndDark(true);
+  }
 
   h1 {
     @include headTitle(4px, 30px);
